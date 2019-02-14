@@ -3,14 +3,15 @@ server:
 
 spring:
   application:
-  name: tensquare-base #指定服务名
+    name: tensquare-base
   datasource:
-  driverClassName: com.mysql.jdbc.Driver
-  url: jdbc:mysql://192.168.184.134:3306/tensquare_base?characterEncoding=utf-8
-  username: root
-  password: 123456
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.25.129:3306/tensquare_base?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
   jpa:
-  database: MySQL
-  show‐sql: true
+    database: MySQL
+    show-sql: true
+    
 
 

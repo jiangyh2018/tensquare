@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
  * @create: 2019-02-12 22:42
  **/
 @RestController
+@CrossOrigin
 @RequestMapping("/label")
 public class BaseController {
     @Autowired

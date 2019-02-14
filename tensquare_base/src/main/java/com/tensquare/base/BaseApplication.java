@@ -13,7 +13,7 @@ import util.IdWorker;
 @SpringBootApplication
 public class BaseApplication {
     public static void main(String[] args) {
-        SpringApplication.run(BaseApplication.class);
+        SpringApplication.run(BaseApplication.class,args);
     }
 
     @Bean
