@@ -77,7 +77,7 @@ public class BaseController {
         Page<Label> labelPage = labelService.searchByPage(page, size, labe);
         long totalElements = labelPage.getTotalElements();
         List<Label> content = labelPage.getContent();
-        return new Result(true,StatusCode.OK,"查询成功",new PageResult<>(Integer.valueOf(totalElements + ""), content));
+        return new Result(true,StatusCode.OK,"查询成功",new PageResult<>(totalElements, content));
     }
 
 }

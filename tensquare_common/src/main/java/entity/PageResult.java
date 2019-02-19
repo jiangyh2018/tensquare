@@ -8,22 +8,22 @@ import java.util.List;
  * @create: 2019-01-28 22:28
  **/
 public class PageResult<T> {
-    private int total;
+    private long total;
     private List<T> rows;
 
     public PageResult() {
     }
 
-    public PageResult(int total, List<T> rows) {
+    public PageResult(long total, List<T> rows) {
         this.total = total;
         this.rows = rows;
     }
 
-    public int getTotal() {
+    public long getTotal() {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(long total) {
         this.total = total;
     }
 
