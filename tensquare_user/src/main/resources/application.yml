@@ -1,0 +1,21 @@
+server:
+  port: 9008
+spring:
+  application:
+    name: tensquare-user
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.25.130:3306/tensquare_user?characterEncoding=UTF-8
+    username: root
+    password: 123456
+  jpa:
+     database: MySQL
+     show-sql: true
+  rabbitmq:
+    host: 192.168.25.130
+  redis:
+    host: 192.168.25.130
+jwt:
+  config:
+    key: itcast
+    ttl: 300000
