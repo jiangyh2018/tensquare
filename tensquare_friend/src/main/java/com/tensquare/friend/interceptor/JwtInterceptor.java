@@ -1,4 +1,4 @@
-package com.tensquare.qa.interceptor;
+package com.tensquare.friend.interceptor;
 
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;

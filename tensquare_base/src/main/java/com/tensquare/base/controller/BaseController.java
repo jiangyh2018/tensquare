@@ -32,6 +32,8 @@ public class BaseController {
 
     @RequestMapping(method = RequestMethod.GET)
     public Result findAll() {
+        System.out.println("111111111");
+        int i=10/0;
         return new Result(true, StatusCode.OK, "查询成功", labelService.findAll());
     }
 

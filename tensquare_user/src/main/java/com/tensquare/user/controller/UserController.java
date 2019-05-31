@@ -4,12 +4,14 @@ import com.tensquare.user.pojo.User;
 import com.tensquare.user.service.UserService;
 import entity.Result;
 import entity.StatusCode;
+import io.jsonwebtoken.Claims;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 import util.JwtUtil;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,6 +33,9 @@ public class UserController {
 
     @Autowired
     private JwtUtil jwtUtil;
+
+    @Autowired
+    private HttpServletRequest request;
 
     @RequestMapping(value = "/sendsms/{mobile}", method = RequestMethod.POST)
     public Result sendMsg(@PathVariable String mobile) {
@@ -87,6 +92,30 @@ public class UserController {
         userService.deleteById(id);
         return new Result(true,StatusCode.OK,"删除成功");
     }
+
+
+    /**
+     * 关注某用户
+     * @return
+     */
+    @RequestMapping(value="/follow/{userid}/{friendid}/{x}",method= RequestMethod.PUT)
+    public Result followUser(@PathVariable String userid,@PathVariable String friendid,@PathVariable int x){
+        userService.updatefanscountandfollowcount(x,userid,friendid);
+
+        return new Result(true,StatusCode.OK,"关注成功");
+    }
+
+    /**
+     * 取消关注某用户
+     * @return
+     */
+    @RequestMapping(value="/follow/{userid}/{friendid}/{x}",method= RequestMethod.DELETE)
+    public Result cancelFollowUser(@PathVariable String userid,@PathVariable String friendid,@PathVariable int x){
+        userService.updatefanscountandfollowcount(x,userid,friendid);
+
+        return new Result(true,StatusCode.OK,"关注成功");
+    }
+
 
 
 }
