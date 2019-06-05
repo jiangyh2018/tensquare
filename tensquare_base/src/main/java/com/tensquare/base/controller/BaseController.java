@@ -1,15 +1,17 @@
 package com.tensquare.base.controller;
 
-import com.sun.org.apache.regexp.internal.RE;
 import com.tensquare.base.pojo.Label;
 import com.tensquare.base.service.LabelService;
 import entity.PageResult;
 import entity.Result;
 import entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -20,9 +22,15 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @RequestMapping("/label")
+@RefreshScope
 public class BaseController {
     @Autowired
     private LabelService labelService;
+    @Autowired
+    private HttpServletRequest request;
+
+    @Value("${sms.ip}")
+    private String ip;
 
     @RequestMapping(method = RequestMethod.POST)
     public Result save(@RequestBody Label label) {
@@ -32,13 +40,15 @@ public class BaseController {
 
     @RequestMapping(method = RequestMethod.GET)
     public Result findAll() {
-        System.out.println("111111111");
-        int i=10/0;
+        System.out.println("333");
+        System.out.println(ip);
         return new Result(true, StatusCode.OK, "查询成功", labelService.findAll());
     }
 
     @RequestMapping(value = "/{labelId}", method = RequestMethod.GET)
     public Result findById(@PathVariable String labelId) {
+        String header = request.getHeader("Authorization");
+        System.out.println("---"+header);
         return new Result(true, StatusCode.OK, "查询成功", labelService.findById(labelId));
     }
 

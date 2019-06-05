@@ -6,12 +6,14 @@ spring:
     name: tensquare-base
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://192.168.25.132:3306/tensquare_base?characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://192.168.25.135:3306/tensquare_base?characterEncoding=utf-8&useSSL=false
     username: root
     password: 123456
   jpa:
     database: MySQL
     show-sql: true
+  rabbitmq:
+    host: 192.168.25.135
 eureka:
   client:
     service-url:
